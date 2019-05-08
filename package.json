@@ -1,0 +1,12 @@
+{
+  "name": "ssr-demo",
+  "version": "0.0.1",
+  "description": "Demo for Serverless-side rendering talk",
+  "main": "index.js",
+  "author": "Samuel Chalela <samuel.chalela@thoughtworks.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "semistandard": "^13.0.1",
+    "eslint": "^5.16.0"
+  }
+}
