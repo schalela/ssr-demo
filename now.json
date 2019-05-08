@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "name": "ssr-demo",
+  "builds": [
+    {
+      "src": "cra/package.json",
+      "use": "@now/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    },
+    {
+      "src": "next/next.config.js",
+      "use": "@now/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/no-ssr/(.*)",
+      "dest": "/cra/$1"
+    },
+    {
+      "src": "/ssr/(.*)",
+      "dest": "/next/$1"
+    }
+  ]
+}
