@@ -4,7 +4,7 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
 
-import EventList from './components/event-list';
+import { EventList } from '@sam/ssr-demo-app';
 
 const cache = new InMemoryCache({
   cacheRedirects: {

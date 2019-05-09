@@ -1,8 +1,8 @@
 {
-  "name": "cra",
+  "name": "ssr-demo-ssr",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
+    "@sam/ssr-demo-app": "file:../app",
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",
     "apollo-link-http": "^1.5.14",
@@ -14,20 +14,13 @@
     "react-apollo": "^2.5.5",
     "react-dom": "^16.8.6",
     "react-html-parser": "^2.0.2",
-    "react-router-dom": "^5.0.0",
-    "react-scripts": "3.0.0",
+    "next": "^8.1.0",
     "styled-components": "^4.2.0"
   },
-  "devDependencies": {
-    "babel-jest": "24.7.1",
-    "react-app-rewired": "^2.1.3"
-  },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "now-build": "react-app-rewired build",
-    "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "dev": "next",
+    "start": "next start",
+    "build": "next build"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -5,8 +5,13 @@
   "main": "index.js",
   "author": "Samuel Chalela <samuel.chalela@thoughtworks.com>",
   "license": "MIT",
+  "private": true,
   "devDependencies": {
-    "semistandard": "^13.0.1",
-    "eslint": "^5.16.0"
-  }
+    "eslint": "^5.16.0",
+    "lerna": "^3.4.3",
+    "semistandard": "^13.0.1"
+  },
+  "workspaces": [
+    "*"
+  ]
 }
