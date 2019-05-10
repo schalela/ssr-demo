@@ -13,5 +13,8 @@
       "src": "ssr/next.config.js",
       "use": "@now/next"
     }
+  ],
+  "regions": [
+    "syd1"
   ]
 }
