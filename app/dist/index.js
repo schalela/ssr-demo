@@ -19438,9 +19438,6 @@ var LeagueListItem = function LeagueListItem(_ref) {
       season = _ref$league.season;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     width: 50,
-    src: logo
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    width: 50,
     src: flag
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, season));
 };
