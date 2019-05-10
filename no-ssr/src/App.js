@@ -4,13 +4,13 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
 
-import { EventList } from '@sam/ssr-demo-app';
+import { LeagueList } from '@sam/ssr-demo-app';
 
 const cache = new InMemoryCache({
   cacheRedirects: {
     Query: {
-      listEvents: (_, { id }, { getCacheKey }) =>
-        getCacheKey({ __typename: 'Event', id })
+      listEvents: (_, { league_id }, { getCacheKey }) =>
+        getCacheKey({ __typename: 'League', league_id })
     }
   }
 });
@@ -18,18 +18,18 @@ const cache = new InMemoryCache({
 const client = new ApolloClient({
   ssrMode: true,
   link: createHttpLink({
-    uri: 'https://yqq5lybmwrehzileyuse5yjzve.appsync-api.ap-southeast-2.amazonaws.com/graphql',
+    uri: 'https://emjxn6xptvbvlhcocrhq7gwhoy.appsync-api.ap-southeast-2.amazonaws.com/graphql',
     headers: {
-      'x-api-key': 'da2-xeycl76qenfufkygpgj5ivem6e'
+      'x-api-key': 'da2-3pd3ilitrzgcjbefkesrjwve7y'
     }
   }),
   cache
 });
 
-function App () {
+function App() {
   return (
     <ApolloProvider client={client}>
-      <EventList />
+      <LeagueList />
     </ApolloProvider>
   );
 }

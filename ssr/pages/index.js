@@ -1,4 +1,4 @@
 import React from 'react';
-import { EventList } from '@sam/ssr-demo-app';
+import { LeagueList } from '@sam/ssr-demo-app';
 
-export default () => <EventList />;
+export default () => <LeagueList />;

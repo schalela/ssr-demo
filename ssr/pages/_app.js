@@ -10,21 +10,21 @@ import fetch from 'node-fetch';
 const cache = new InMemoryCache({
   cacheRedirects: {
     Query: {
-      listEvents: (_, { id }, { getCacheKey }) =>
-        getCacheKey({ __typename: 'Event', id })
+      listEvents: (_, { league_id }, { getCacheKey }) =>
+        getCacheKey({ __typename: 'Event', league_id })
     }
   }
 });
 
 class MyApp extends App {
-  static async getInitialProps ({ Component, ctx }) {
+  static async getInitialProps({ Component, ctx }) {
     let initialState = {};
     const apollo = new ApolloClient({
       ssrMode: !process.browser,
       link: createHttpLink({
-        uri: 'https://yqq5lybmwrehzileyuse5yjzve.appsync-api.ap-southeast-2.amazonaws.com/graphql',
+        uri: 'https://emjxn6xptvbvlhcocrhq7gwhoy.appsync-api.ap-southeast-2.amazonaws.com/graphql',
         headers: {
-          'x-api-key': 'da2-xeycl76qenfufkygpgj5ivem6e'
+          'x-api-key': 'da2-3pd3ilitrzgcjbefkesrjwve7y'
         },
         fetch
       }),
@@ -49,14 +49,14 @@ class MyApp extends App {
     };
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.apolloClient = new ApolloClient({
       ssrMode: !process.browser,
       link: createHttpLink({
-        uri: 'https://yqq5lybmwrehzileyuse5yjzve.appsync-api.ap-southeast-2.amazonaws.com/graphql',
+        uri: 'https://emjxn6xptvbvlhcocrhq7gwhoy.appsync-api.ap-southeast-2.amazonaws.com/graphql',
         headers: {
-          'x-api-key': 'da2-xeycl76qenfufkygpgj5ivem6e'
+          'x-api-key': 'da2-3pd3ilitrzgcjbefkesrjwve7y'
         },
         fetch
       }),
@@ -64,7 +64,7 @@ class MyApp extends App {
     });
   }
 
-  render () {
+  render() {
     const { Component, pageProps } = this.props;
     return (
       <Container>
