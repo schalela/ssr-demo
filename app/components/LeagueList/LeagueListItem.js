@@ -2,11 +2,11 @@ import React from 'react';
 
 const LeagueListItem = ({ league: { name, logo, flag, season } }) => {
   return (
-    <div>
+    <li>
       <div>{name}</div>
       <img width={50} src={flag} />
       <div>{season}</div>
-    </div>
+    </li>
   );
 };
 

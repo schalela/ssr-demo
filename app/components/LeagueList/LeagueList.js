@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import LeagueListItem from './LeagueListItem';
@@ -15,7 +15,9 @@ const GET_LEAGUES = gql`
   }
 `;
 
-const LeagueList = () => {
+const LeagueList = ({ initialLeague }) => {
+  const displayLeagues = [];
+
   return (
     <Query query={GET_LEAGUES}>
       {({ data, loading }) => {
@@ -24,7 +26,16 @@ const LeagueList = () => {
         }
 
         const { leagues } = data;
-        return leagues.map((league, i) => <LeagueListItem key={i} league={league} />);
+
+        for (let i = initialLeague; i < initialLeague + 15; i++) {
+          displayLeagues.push(leagues[i]);
+        }
+
+        return (
+          <ul>
+            {displayLeagues.map((league, i) => <LeagueListItem key={i} league={league} />)}
+          </ul>
+        );
       }}
     </Query>
   );

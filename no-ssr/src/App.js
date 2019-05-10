@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -26,10 +26,22 @@ const client = new ApolloClient({
   cache
 });
 
-function App() {
+function App () {
+  const [initialLeague, setInitialLeague] = useState(0);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [initialLeague]);
+
+  function handleScroll () {
+    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
+    setInitialLeague(initialLeague + 15);
+  }
+
   return (
     <ApolloProvider client={client}>
-      <LeagueList />
+      <LeagueList initialLeague={initialLeague} />
     </ApolloProvider>
   );
 }

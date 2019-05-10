@@ -19392,24 +19392,31 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 var GET_LEAGUES = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_templateObject());
 
-var LeagueList = function LeagueList() {
+var LeagueList = function LeagueList(_ref) {
+  var initialLeague = _ref.initialLeague;
+  var displayLeagues = [];
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_2__["Query"], {
     query: GET_LEAGUES
-  }, function (_ref) {
-    var data = _ref.data,
-        loading = _ref.loading;
+  }, function (_ref2) {
+    var data = _ref2.data,
+        loading = _ref2.loading;
 
     if (loading) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
     }
 
     var leagues = data.leagues;
-    return leagues.map(function (league, i) {
+
+    for (var i = initialLeague; i < initialLeague + 15; i++) {
+      displayLeagues.push(leagues[i]);
+    }
+
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, displayLeagues.map(function (league, i) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LeagueListItem__WEBPACK_IMPORTED_MODULE_3__["default"], {
         key: i,
         league: league
       });
-    });
+    }));
   });
 };
 
@@ -19436,7 +19443,7 @@ var LeagueListItem = function LeagueListItem(_ref) {
       logo = _ref$league.logo,
       flag = _ref$league.flag,
       season = _ref$league.season;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     width: 50,
     src: flag
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, season));
