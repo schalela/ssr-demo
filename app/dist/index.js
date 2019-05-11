@@ -19359,6 +19359,109 @@ if (hasSymbols()) {
 
 /***/ }),
 
+/***/ "./components/Fixtures/FixtureItem.js":
+/*!********************************************!*\
+  !*** ./components/Fixtures/FixtureItem.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var FixtureItem = function FixtureItem(_ref) {
+  var _ref$fixture = _ref.fixture,
+      homeTeam = _ref$fixture.homeTeam,
+      awayTeam = _ref$fixture.awayTeam,
+      statusShort = _ref$fixture.statusShort,
+      finalScore = _ref$fixture.final_score;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, homeTeam, " vs ", awayTeam), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, statusShort, ": ", finalScore));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (FixtureItem);
+
+/***/ }),
+
+/***/ "./components/Fixtures/Fixtures.js":
+/*!*****************************************!*\
+  !*** ./components/Fixtures/Fixtures.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! graphql-tag */ "../node_modules/graphql-tag/src/index.js");
+/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-apollo */ "../node_modules/react-apollo/react-apollo.esm.js");
+/* harmony import */ var _FixtureItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FixtureItem */ "./components/Fixtures/FixtureItem.js");
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  query fixtures($date: String!) {\n    fixtures(date: $date) {\n      fixture_id\n      homeTeam\n      awayTeam\n      statusShort\n      goalsHomeTeam\n      goalsAwayTeam\n      halftime_score\n      final_score\n      penalty\n    }\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+var GET_FIXTURES = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_templateObject());
+
+var Fixtures = function Fixtures() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_2__["Query"], {
+    query: GET_FIXTURES,
+    variables: {
+      date: '2019-04-20'
+    }
+  }, function (_ref) {
+    var data = _ref.data,
+        loading = _ref.loading;
+
+    if (loading) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
+    }
+
+    var fixtures = data.fixtures;
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, fixtures.map(function (fixture, i) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FixtureItem__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        key: i,
+        fixture: fixture
+      });
+    }));
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Fixtures);
+
+/***/ }),
+
+/***/ "./components/Fixtures/index.js":
+/*!**************************************!*\
+  !*** ./components/Fixtures/index.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Fixtures__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Fixtures */ "./components/Fixtures/Fixtures.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _Fixtures__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+
+
+/***/ }),
+
 /***/ "./components/LeagueList/LeagueList.js":
 /*!*********************************************!*\
   !*** ./components/LeagueList/LeagueList.js ***!
@@ -19392,26 +19495,19 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 var GET_LEAGUES = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_templateObject());
 
-var LeagueList = function LeagueList(_ref) {
-  var initialLeague = _ref.initialLeague;
-  var displayLeagues = [];
+var LeagueList = function LeagueList() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_2__["Query"], {
     query: GET_LEAGUES
-  }, function (_ref2) {
-    var data = _ref2.data,
-        loading = _ref2.loading;
+  }, function (_ref) {
+    var data = _ref.data,
+        loading = _ref.loading;
 
     if (loading) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
     }
 
     var leagues = data.leagues;
-
-    for (var i = initialLeague; i < initialLeague + 15; i++) {
-      displayLeagues.push(leagues[i]);
-    }
-
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, displayLeagues.map(function (league, i) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, leagues.map(function (league, i) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LeagueListItem__WEBPACK_IMPORTED_MODULE_3__["default"], {
         key: i,
         league: league
@@ -19473,13 +19569,17 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************!*\
   !*** ./components/index.js ***!
   \*****************************/
-/*! exports provided: LeagueList */
+/*! exports provided: LeagueList, Fixtures */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LeagueList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LeagueList */ "./components/LeagueList/index.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LeagueList", function() { return _LeagueList__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _Fixtures__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fixtures */ "./components/Fixtures/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Fixtures", function() { return _Fixtures__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
 
 
 

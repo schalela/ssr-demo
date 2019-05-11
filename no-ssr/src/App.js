@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
 
-import { LeagueList } from '@sam/ssr-demo-app';
+import { Fixtures } from '@sam/ssr-demo-app';
 
 const cache = new InMemoryCache({
   cacheRedirects: {
     Query: {
-      listEvents: (_, { league_id }, { getCacheKey }) =>
-        getCacheKey({ __typename: 'League', league_id })
+      listEvents: (_, { fixture_id }, { getCacheKey }) =>
+        getCacheKey({ __typename: 'League', fixture_id })
     }
   }
 });
@@ -27,21 +27,9 @@ const client = new ApolloClient({
 });
 
 function App () {
-  const [initialLeague, setInitialLeague] = useState(0);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [initialLeague]);
-
-  function handleScroll () {
-    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
-    setInitialLeague(initialLeague + 15);
-  }
-
   return (
     <ApolloProvider client={client}>
-      <LeagueList initialLeague={initialLeague} />
+      <Fixtures />
     </ApolloProvider>
   );
 }
