@@ -43,7 +43,7 @@ const Fixtures = () => {
           <>
             <Title>Global results for 2019-04-21</Title>
             <FixtureList>
-              {fixtures.sort((a, b) => a.fixture_id * (a.league_id - b.league_id)).map((fixture, i) => <FixtureItem key={i} fixture={fixture} />)}
+              {fixtures.sort((a, b) => a.league_id - b.league_id || a.fixture_id - b.fixture_id).map((fixture, i) => <FixtureItem key={i} fixture={fixture} />)}
             </FixtureList>
           </>
         );
