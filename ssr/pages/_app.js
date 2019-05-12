@@ -10,15 +10,21 @@ import fetch from 'node-fetch';
 const cache = new InMemoryCache({
   cacheRedirects: {
     Query: {
-      listEvents: (_, { league_id }, { getCacheKey }) =>
-        getCacheKey({ __typename: 'Event', league_id })
+      listEvents: (_, { fixture_id }, { getCacheKey }) =>
+        getCacheKey({ __typename: 'Fixture', fixture_id })
     }
   }
 });
 
 class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
+  static async getInitialProps ({ Component, ctx }) {
     let initialState = {};
+    let pageProps = {};
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+
     const apollo = new ApolloClient({
       ssrMode: !process.browser,
       link: createHttpLink({
@@ -45,11 +51,12 @@ class MyApp extends App {
     initialState = apollo.cache.extract();
 
     return {
+      pageProps,
       initialState
     };
   }
 
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.apolloClient = new ApolloClient({
       ssrMode: !process.browser,
@@ -64,8 +71,9 @@ class MyApp extends App {
     });
   }
 
-  render() {
+  render () {
     const { Component, pageProps } = this.props;
+
     return (
       <Container>
         <ApolloProvider client={this.apolloClient}>

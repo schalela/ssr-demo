@@ -4,13 +4,13 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
 
-import { Fixtures } from '@sam/ssr-demo-app';
+import { Fixtures } from './components';
 
 const cache = new InMemoryCache({
   cacheRedirects: {
     Query: {
       listEvents: (_, { fixture_id }, { getCacheKey }) =>
-        getCacheKey({ __typename: 'League', fixture_id })
+        getCacheKey({ __typename: 'Fixture', fixture_id })
     }
   }
 });
@@ -26,7 +26,7 @@ const client = new ApolloClient({
   cache
 });
 
-function App () {
+function App() {
   return (
     <ApolloProvider client={client}>
       <Fixtures />
