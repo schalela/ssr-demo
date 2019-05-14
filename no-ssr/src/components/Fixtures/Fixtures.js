@@ -1,25 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import FixtureItem from './FixtureItem';
 
-const GET_FIXTURES = gql`
-  query fixtures($date: String!) {
-    fixtures(date: $date) {
-      fixture_id
-      league_id
-      homeTeam
-      awayTeam
-      statusShort
-      goalsHomeTeam
-      goalsAwayTeam
-      halftime_score
-      final_score
-      penalty
-    }
-  }
-`;
+import GET_FIXTURES from '../../data/get-fixtures.query';
+import GET_LIVE from '../../data/get-live.query';
 
 const FixtureList = styled.ul`
   display: flex;
@@ -27,11 +12,15 @@ const FixtureList = styled.ul`
   align-items: center;
 `;
 
-const Title = styled.h1``;
+const Title = styled.h1`
+font-family: arial,sans-serif;
+font-size: 20px; 
+`;
 
-const Fixtures = () => {
+const Fixtures = ({ date }) => {
+  const title = date ? `Results for ${date}` : 'Live results';
   return (
-    <Query query={GET_FIXTURES} variables={{ date: '2019-04-21' }}>
+    <Query query={date ? GET_FIXTURES : GET_LIVE} variables={date && { date }}>
       {({ data, loading }) => {
         if (loading) {
           return <div>Loading...</div>;
@@ -41,7 +30,7 @@ const Fixtures = () => {
 
         return (
           <>
-            <Title>Global results for 2019-04-21</Title>
+            <Title>{title}</Title>
             <FixtureList>
               {fixtures.sort((a, b) => a.league_id - b.league_id || a.fixture_id - b.fixture_id).map((fixture, i) => <FixtureItem key={i} fixture={fixture} />)}
             </FixtureList>

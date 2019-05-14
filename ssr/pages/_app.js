@@ -17,7 +17,7 @@ const cache = new InMemoryCache({
 });
 
 class MyApp extends App {
-  static async getInitialProps ({ Component, ctx }) {
+  static async getInitialProps({ Component, ctx }) {
     let initialState = {};
     let pageProps = {};
 
@@ -39,7 +39,7 @@ class MyApp extends App {
 
     try {
       await getDataFromTree(
-        <ApolloProvider client={apollo}><Component /></ApolloProvider>
+        <ApolloProvider client={apollo}><Component {...pageProps} /></ApolloProvider>
       );
     } catch (error) {
       // Prevent Apollo Client GraphQL errors from crashing SSR.
@@ -56,7 +56,7 @@ class MyApp extends App {
     };
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.apolloClient = new ApolloClient({
       ssrMode: !process.browser,
@@ -71,7 +71,7 @@ class MyApp extends App {
     });
   }
 
-  render () {
+  render() {
     const { Component, pageProps } = this.props;
 
     return (
