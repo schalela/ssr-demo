@@ -21,14 +21,14 @@
     {
       "src": "/ssr/(.*)",
       "headers": {
-        "cache-control": "no-cache"
+        "cache-control": "s-maxage=0"
       },
       "dest": "/ssr/$1"
     },
     {
       "src": "/no-ssr/(.*)",
       "headers": {
-        "cache-control": "no-cache"
+        "cache-control": "s-maxage=0"
       },
       "dest": "/no-ssr/$1"
     }
