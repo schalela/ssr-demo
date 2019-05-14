@@ -20,17 +20,10 @@
   "routes": [
     {
       "src": "/ssr/(.*)",
-      "headers": {
-        "cache-control": "no-cache",
-        "set-cookie": "_now_no_cache=1; HttpOnly"
-      },
       "dest": "/ssr/$1"
     },
     {
       "src": "/no-ssr/(.*)",
-      "headers": {
-        "cache-control": "no-cache"
-      },
       "dest": "/no-ssr/$1"
     }
   ]
