@@ -22,7 +22,7 @@
       "src": "/ssr/(.*)",
       "headers": {
         "cache-control": "no-cache",
-        "set-cookie": "_now_no_cache=1"
+        "set-cookie": "_now_no_cache=1; HttpOnly"
       },
       "dest": "/ssr/$1"
     },
