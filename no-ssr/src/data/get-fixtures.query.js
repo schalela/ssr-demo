@@ -5,6 +5,9 @@ export default gql`
     fixtures(date: $date) {
       fixture_id
       league_id
+      league {
+        logo
+      }
       homeTeam
       awayTeam
       statusShort
