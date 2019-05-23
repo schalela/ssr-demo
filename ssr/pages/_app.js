@@ -17,7 +17,7 @@ const cache = new InMemoryCache({
 });
 
 class MyApp extends App {
-  static async getInitialProps ({ Component, ctx }) {
+  static async getInitialProps({ Component, ctx }) {
     let initialState = {};
     let pageProps = {};
 
@@ -56,7 +56,7 @@ class MyApp extends App {
     };
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.apolloClient = new ApolloClient({
       ssrMode: !process.browser,
@@ -71,7 +71,7 @@ class MyApp extends App {
     });
   }
 
-  render () {
+  render() {
     const { Component, pageProps } = this.props;
 
     return (

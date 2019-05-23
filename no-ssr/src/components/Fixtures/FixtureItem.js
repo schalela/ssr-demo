@@ -2,51 +2,78 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ListItem = styled.li`
-  font-family: arial,sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  padding: 10px;
-  border: 1px solid gray;
-  border-radius: 5px;
-  margin-bottom: 8px;
   display: flex;
-  width: 280px;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 640px;
+  max-width: calc(100% - 32px);
+  font-size: 16px;
+  padding: 32px;
+  border-radius: 8px;
+  margin-bottom: 16px;
   place-items: center;
-  justify-content: space-between;
+  background: white;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+
+  @media (max-width: 500px) {
+    padding: 24px 8px;
+  }
 `;
 
-const Teams = styled.div`
-  display: flex;
-  flex-direction: column;
+const Team = styled.div`
+  width: 35%;
+  text-align: center;
 `;
 
-const TeamResult = styled.div`
-  display: flex;
-  padding: 5px;
-  justify-content: space-between;
-  width: 200px;
+const TeamLogo = styled.img`
+  display: block;
+  margin: 0 auto;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  background: #f2f2f2;
+  border-radius: 32px;
+`;
+
+const TeamName = styled.p`
+  font-size: 14px;
+  margin: 0;
+`;
+
+const Score = styled.div`
+  width: 30%;
+  text-align: center;
+`;
+
+const Goals = styled.h2`
+  display: block;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 64px;
+  margin: 0 0 16px;
 `;
 
 const Status = styled.div`
-  border-left: 2px solid;
-  height: 50px;
-  padding-left: 20px;
+  display: block;
+  font-size: 14px;
+  color: #999;
 `;
 
-const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam, goalsAwayTeam } }) => {
+const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam, goalsAwayTeam, logo } }) => {
   return (
     <ListItem>
-      <Teams>
-        <TeamResult>
-          <div>{homeTeam}</div>
-          <div>{goalsHomeTeam}</div>
-        </TeamResult>
-        <TeamResult>
-          <div>{awayTeam}</div>
-          <div>{goalsAwayTeam}</div>
-        </TeamResult>
-      </Teams>
-      <Status>{statusShort}</Status>
+      <Team>
+        <TeamLogo src='' alt='' />
+        <TeamName>{homeTeam}</TeamName>
+      </Team>
+      <Score>
+        <Goals>{goalsHomeTeam} – {goalsAwayTeam}</Goals>
+        <Status>{statusShort}</Status>
+      </Score>
+      <Team>
+        <TeamLogo src='' alt='' />
+        <TeamName>{awayTeam}</TeamName>
+      </Team>
     </ListItem>
   );
 };

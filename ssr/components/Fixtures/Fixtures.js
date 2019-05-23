@@ -13,9 +13,12 @@ const FixtureList = styled.ul`
 `;
 
 const Title = styled.h1`
-font-family: arial,sans-serif;
-font-size: 20px; 
+  font-size: 20px; 
 `;
+
+const Loading = styled.p`
+  color: white;
+`
 
 const Fixtures = ({ date }) => {
   const title = date ? `Results for ${date}` : 'Live results';
@@ -23,7 +26,7 @@ const Fixtures = ({ date }) => {
     <Query query={date ? GET_FIXTURES : GET_LIVE} variables={date && { date }}>
       {({ data, loading }) => {
         if (loading) {
-          return <div>Loading...</div>;
+          return <Loading>Loading...</Loading>;
         }
 
         const { fixtures } = data;

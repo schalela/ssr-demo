@@ -1,0 +1,18 @@
+@import url('https://rsms.me/inter/inter.css');
+
+html {
+  text-align: center;
+  background-color: #41563D;
+  background-image: url('./bg.png');
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+html, body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+
+body {
+  padding: 48px 0;
+}

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ListItem = styled.li`
-  font-family: arial,sans-serif;
   font-size: 14px;
   line-height: 20px;
   padding: 10px;

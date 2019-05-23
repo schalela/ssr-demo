@@ -10,27 +10,42 @@ const FixtureList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0;
+  margin: 0;
 `;
 
 const Title = styled.h1`
-font-family: arial,sans-serif;
-font-size: 20px; 
+  font-size: 32px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 32px;
 `;
 
+const Date = styled.h2`
+  font-size: 20px;
+  color: white;
+  margin-bottom: 48px;
+  font-weight: 500;
+`;
+
+const Loading = styled.p`
+  color: rgba(255,255,255,0.3);
+`
+
 const Fixtures = ({ date }) => {
-  const title = date ? `Results for ${date}` : 'Live results';
   return (
     <Query query={date ? GET_FIXTURES : GET_LIVE} variables={date && { date }}>
       {({ data, loading }) => {
         if (loading) {
-          return <div>Loading...</div>;
+          return <Loading>Loading...</Loading>;
         }
 
         const { fixtures } = data;
 
         return (
           <>
-            <Title>{title}</Title>
+            <Title>Live results</Title>
+            <Date>{date}</Date>
             <FixtureList>
               {fixtures.sort((a, b) => a.league_id - b.league_id || a.fixture_id - b.fixture_id).map((fixture, i) => <FixtureItem key={i} fixture={fixture} />)}
             </FixtureList>
