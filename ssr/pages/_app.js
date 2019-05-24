@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
 html {
   text-align: center;
   background-color: #41563D;
-  background-image: url('static/bg.png');
+  background-image: url('/ssr/static/bg.png');
   background-repeat: repeat;
   background-attachment: fixed;
 }
@@ -38,7 +38,7 @@ const cache = new InMemoryCache({
 });
 
 class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
+  static async getInitialProps ({ Component, ctx }) {
     let initialState = {};
     let pageProps = {};
 
@@ -77,7 +77,7 @@ class MyApp extends App {
     };
   }
 
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.apolloClient = new ApolloClient({
       ssrMode: !process.browser,
@@ -92,7 +92,7 @@ class MyApp extends App {
     });
   }
 
-  render() {
+  render () {
     const { Component, pageProps } = this.props;
 
     return (
