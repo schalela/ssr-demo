@@ -21,10 +21,6 @@
     {
       "src": "/ssr/date/(.*)",
       "dest": "/ssr/date?date=$1"
-    },
-    {
-      "src": "/no-ssr/date/(.*)",
-      "dest": "/no-ssr?date=$1"
     }
   ]
 }

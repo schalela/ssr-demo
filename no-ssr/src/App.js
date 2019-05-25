@@ -8,14 +8,7 @@ import { Fixtures } from './components';
 
 import parseQueryString from './utils/get-param';
 
-const cache = new InMemoryCache({
-  cacheRedirects: {
-    Query: {
-      listEvents: (_, { fixture_id }, { getCacheKey }) =>
-        getCacheKey({ __typename: 'Fixture', fixture_id })
-    }
-  }
-});
+const cache = new InMemoryCache();
 
 const client = new ApolloClient({
   ssrMode: true,
@@ -28,7 +21,7 @@ const client = new ApolloClient({
   cache
 });
 
-function App() {
+function App () {
   const params = parseQueryString();
   const date = params['date'];
 

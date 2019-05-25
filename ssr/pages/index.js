@@ -7,7 +7,7 @@ const Index = () => {
 
 Index.getInitialProps = async ({ res }) => {
   if (res) {
-    res.setHeader('Cache-Control', 's-maxage=30, stale-while-revalidate');
+    res.setHeader('Cache-Control', 's-maxage=15, stale-while-revalidate');
   }
 };
 
