@@ -19,7 +19,7 @@ html {
 }
 
 html, body {
-  font-family: 'Inter', sans-serif;
+  font-family: sans-serif;
   margin: 0;
 }
 
