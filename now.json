@@ -19,20 +19,12 @@
   ],
   "routes": [
     {
-      "src": "/ssr/(.*)",
-      "dest": "/ssr/$1"
-    },
-    {
       "src": "/ssr/date/(.*)",
       "dest": "/ssr/date?date=$1"
     },
     {
       "src": "/no-ssr/date/(.*)",
       "dest": "/no-ssr?date=$1"
-    },
-    {
-      "src": "/no-ssr/(.*)",
-      "dest": "/no-ssr/$1"
     }
   ]
 }
