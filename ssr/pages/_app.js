@@ -28,17 +28,17 @@ body {
 }
 `;
 
-const cache = new InMemoryCache({
-  cacheRedirects: {
-    Query: {
-      listEvents: (_, { fixture_id }, { getCacheKey }) =>
-        getCacheKey({ __typename: 'Fixture', fixture_id })
-    }
-  }
-});
-
 class MyApp extends App {
   static async getInitialProps ({ Component, ctx }) {
+    const cache = new InMemoryCache({
+      cacheRedirects: {
+        Query: {
+          listEvents: (_, { fixture_id }, { getCacheKey }) =>
+            getCacheKey({ __typename: 'Fixture', fixture_id })
+        }
+      }
+    });
+
     let initialState = {};
     let pageProps = {};
 
@@ -79,6 +79,16 @@ class MyApp extends App {
 
   constructor (props) {
     super(props);
+
+    const cache = new InMemoryCache({
+      cacheRedirects: {
+        Query: {
+          listEvents: (_, { fixture_id }, { getCacheKey }) =>
+            getCacheKey({ __typename: 'Fixture', fixture_id })
+        }
+      }
+    });
+
     this.apolloClient = new ApolloClient({
       ssrMode: !process.browser,
       link: createHttpLink({
