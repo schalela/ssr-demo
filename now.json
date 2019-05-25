@@ -23,6 +23,14 @@
       "dest": "/ssr/$1"
     },
     {
+      "src": "/ssr/date/(?<date>[^/]+)$",
+      "dest": "/ssr?date=$date"
+    },
+    {
+      "src": "/no-ssr/date/(?<date>[^/]+)$",
+      "dest": "/no-ssr?date=$date"
+    },
+    {
       "src": "/no-ssr/(.*)",
       "dest": "/no-ssr/$1"
     }
