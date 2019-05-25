@@ -24,7 +24,7 @@
     },
     {
       "src": "/ssr/date/(?<date>[^/]+)$",
-      "dest": "/ssr?date=$date"
+      "dest": "/ssr/date?date=$date"
     },
     {
       "src": "/no-ssr/date/(?<date>[^/]+)$",

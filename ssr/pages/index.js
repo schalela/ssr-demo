@@ -1,18 +1,14 @@
 import React from 'react';
 import { Fixtures } from '../components';
 
-const Index = ({ date }) => {
-  return <Fixtures date={date} />;
+const Index = () => {
+  return <Fixtures />;
 };
 
-Index.getInitialProps = async ({ res, query }) => {
-  const { date } = query;
-
+Index.getInitialProps = async ({ res }) => {
   if (res) {
-    res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate');
+    res.setHeader('Cache-Control', 's-maxage=30, stale-while-revalidate');
   }
-
-  return { date };
 };
 
 export default Index;
