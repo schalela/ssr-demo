@@ -41,8 +41,10 @@ const TeamName = styled.p`
 `;
 
 const Score = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 30%;
-  text-align: center;
+  align-items: center;
 `;
 
 const Goals = styled.h2`
@@ -59,7 +61,28 @@ const Status = styled.div`
   color: #999;
 `;
 
-const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam, goalsAwayTeam, logo } }) => {
+const Time = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #279A24;
+  width: 30px;
+`;
+
+const LiveBar = styled.div`
+  height: 2px;
+  width: 30%;
+  margin: 0px 30px;
+  background-color: green;
+  animation: live-indicator 1s infinite alternate;
+
+  @keyframes live-indicator {
+    from { margin-left: 5px; }
+    to { margin-left: 15px; }
+  }
+`;
+
+const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam, goalsAwayTeam, elapsed, logo } }) => {
   return (
     <ListItem>
       <Team>
@@ -68,7 +91,10 @@ const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam
       </Team>
       <Score>
         <Goals>{goalsHomeTeam} – {goalsAwayTeam}</Goals>
-        <Status>{statusShort}</Status>
+        <Time>
+          {elapsed}'
+          {statusShort !== 'HT' && statusShort !== 'FT' && <LiveBar />}
+        </Time>
       </Score>
       <Team>
         <TeamLogo src={awayTeam.logo} alt={awayTeam.team_name} />

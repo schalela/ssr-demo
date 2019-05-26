@@ -19,6 +19,7 @@ export default gql`
         logo
       }
       statusShort
+      elapsed
       goalsHomeTeam
       goalsAwayTeam
     }
