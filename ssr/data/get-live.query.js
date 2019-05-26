@@ -5,17 +5,19 @@ export default gql`
     fixtures: live {
       fixture_id
       league_id
-      league {
+      homeTeam {
+        team_id
+        team_name
         logo
       }
-      homeTeam
-      awayTeam
+      awayTeam {
+        team_id
+        team_name
+        logo
+      }
       statusShort
       goalsHomeTeam
       goalsAwayTeam
-      halftime_score
-      final_score
-      penalty
     }
   }
 `;

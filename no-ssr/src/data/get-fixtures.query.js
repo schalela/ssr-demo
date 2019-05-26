@@ -8,14 +8,19 @@ export default gql`
       league {
         logo
       }
-      homeTeam
-      awayTeam
+      homeTeam {
+        team_id
+        team_name
+        logo
+      }
+      awayTeam {
+        team_id
+        team_name
+        logo
+      }
       statusShort
       goalsHomeTeam
       goalsAwayTeam
-      halftime_score
-      final_score
-      penalty
     }
   }
 `;

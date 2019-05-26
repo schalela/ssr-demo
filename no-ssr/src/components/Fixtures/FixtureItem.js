@@ -63,16 +63,16 @@ const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam
   return (
     <ListItem>
       <Team>
-        <TeamLogo src='' alt='' />
-        <TeamName>{homeTeam}</TeamName>
+        <TeamLogo src={homeTeam.logo} alt={homeTeam.team_name} />
+        <TeamName>{homeTeam.team_name}</TeamName>
       </Team>
       <Score>
         <Goals>{goalsHomeTeam} – {goalsAwayTeam}</Goals>
         <Status>{statusShort}</Status>
       </Score>
       <Team>
-        <TeamLogo src='' alt='' />
-        <TeamName>{awayTeam}</TeamName>
+        <TeamLogo src={awayTeam.logo} alt={awayTeam.team_name} />
+        <TeamName>{awayTeam.team_name}</TeamName>
       </Team>
     </ListItem>
   );
