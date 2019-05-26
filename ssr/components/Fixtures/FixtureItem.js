@@ -85,13 +85,13 @@ const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam
   return (
     <ListItem>
       <Team>
-        <LazyLoad offsetVertical={300}>
+        <LazyLoad width={64} height={64} offsetVertical={300}>
           <TeamLogo src={homeTeam.logo} alt={homeTeam.team_name} />
         </LazyLoad>
         <TeamName>{homeTeam.team_name}</TeamName>
       </Team>
       <Score>
-        <LazyLoad offsetVertical={300}>
+        <LazyLoad height={40} offsetVertical={300}>
           <LeagueLogo src={logo} />
         </LazyLoad>
         <Goals>{goalsHomeTeam} – {goalsAwayTeam}</Goals>
@@ -101,7 +101,7 @@ const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam
         </Time>
       </Score>
       <Team>
-        <LazyLoad offsetVertical={300}>
+        <LazyLoad width={64} height={64} offsetVertical={300}>
           <TeamLogo src={awayTeam.logo} alt={awayTeam.team_name} />
         </LazyLoad>
         <TeamName>{awayTeam.team_name}</TeamName>
