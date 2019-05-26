@@ -34,7 +34,7 @@ const Loading = styled.p`
 
 const Fixtures = ({ date }) => {
   return (
-    <Query query={date ? GET_FIXTURES : GET_LIVE} variables={date && { date }}>
+    <Query query={date ? GET_FIXTURES : GET_LIVE} variables={date && { date }} pollInterval={date ? 0 : 60000}>
       {({ data, loading }) => {
         if (loading) {
           return <Loading>Loading...</Loading>;
