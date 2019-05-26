@@ -30,7 +30,7 @@ const Date = styled.h2`
 
 const Loading = styled.p`
   color: rgba(255,255,255,0.3);
-`
+`;
 
 const Fixtures = ({ date }) => {
   return (
@@ -44,7 +44,7 @@ const Fixtures = ({ date }) => {
 
         return (
           <>
-            <Title>Live results</Title>
+            <Title>{date ? 'Final results' : 'Live results'}</Title>
             <Date>{date}</Date>
             <FixtureList>
               {fixtures.sort((a, b) => a.league_id - b.league_id || a.fixture_id - b.fixture_id).map((fixture, i) => <FixtureItem key={i} fixture={fixture} />)}

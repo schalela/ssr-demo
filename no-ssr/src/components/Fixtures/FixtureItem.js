@@ -35,6 +35,10 @@ const TeamLogo = styled.img`
   border-radius: 32px;
 `;
 
+const LeagueLogo = styled.img`
+  height: 40px;
+`;
+
 const TeamName = styled.p`
   font-size: 14px;
   margin: 0;
@@ -55,12 +59,6 @@ const Goals = styled.h2`
   margin: 0 0 16px;
 `;
 
-const Status = styled.div`
-  display: block;
-  font-size: 14px;
-  color: #999;
-`;
-
 const Time = styled.div`
   display: flex;
   flex-direction: column;
@@ -74,7 +72,7 @@ const LiveBar = styled.div`
   width: 30%;
   margin: 0px 30px;
   background-color: green;
-  animation: live-indicator 1s infinite alternate;
+  animation: live-indicator 0.5s infinite alternate;
 
   @keyframes live-indicator {
     from { margin-left: 5px; }
@@ -82,7 +80,7 @@ const LiveBar = styled.div`
   }
 `;
 
-const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam, goalsAwayTeam, elapsed, logo } }) => {
+const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam, goalsAwayTeam, elapsed, league: { logo } } }) => {
   return (
     <ListItem>
       <Team>
@@ -90,6 +88,7 @@ const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam
         <TeamName>{homeTeam.team_name}</TeamName>
       </Team>
       <Score>
+        <LeagueLogo src={logo} />
         <Goals>{goalsHomeTeam} – {goalsAwayTeam}</Goals>
         <Time>
           {elapsed}'

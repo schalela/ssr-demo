@@ -5,6 +5,9 @@ export default gql`
     fixtures: live {
       fixture_id
       league_id
+      league {
+        logo
+      }
       homeTeam {
         team_id
         team_name
