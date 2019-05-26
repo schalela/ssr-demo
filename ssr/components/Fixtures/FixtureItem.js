@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import LazyLoad from 'react-lazy-load';
 
 const ListItem = styled.li`
   display: flex;
@@ -84,11 +85,15 @@ const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam
   return (
     <ListItem>
       <Team>
-        <TeamLogo src={homeTeam.logo} alt={homeTeam.team_name} />
+        <LazyLoad offsetVertical={300}>
+          <TeamLogo src={homeTeam.logo} alt={homeTeam.team_name} />
+        </LazyLoad>
         <TeamName>{homeTeam.team_name}</TeamName>
       </Team>
       <Score>
-        <LeagueLogo src={logo} />
+        <LazyLoad offsetVertical={300}>
+          <LeagueLogo src={logo} />
+        </LazyLoad>
         <Goals>{goalsHomeTeam} – {goalsAwayTeam}</Goals>
         <Time>
           {elapsed}'
@@ -96,10 +101,13 @@ const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam
         </Time>
       </Score>
       <Team>
-        <TeamLogo src={awayTeam.logo} alt={awayTeam.team_name} />
+        <LazyLoad offsetVertical={300}>
+          <TeamLogo src={awayTeam.logo} alt={awayTeam.team_name} />
+        </LazyLoad>
         <TeamName>{awayTeam.team_name}</TeamName>
       </Team>
     </ListItem>
+
   );
 };
 

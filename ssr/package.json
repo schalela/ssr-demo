@@ -7,13 +7,14 @@
     "apollo-link-http": "^1.5.14",
     "graphql": "^14.2.1",
     "graphql-tag": "^2.10.1",
+    "next": "^8.1.0",
     "node-fetch": "^2.3.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-apollo": "^2.5.5",
     "react-dom": "^16.8.6",
     "react-html-parser": "^2.0.2",
-    "next": "^8.1.0",
+    "react-lazy-load": "^3.0.13",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
