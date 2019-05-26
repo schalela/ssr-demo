@@ -76,7 +76,7 @@ class MyApp extends App {
       link: createHttpLink({
         uri: 'https://emjxn6xptvbvlhcocrhq7gwhoy.appsync-api.ap-southeast-2.amazonaws.com/graphql',
         headers: {
-          'x-api-key': 'da2-3pd3ilitrzgcjbefkesrjwve7y'
+          'x-api-key': 'da2-htijskntwzehlai3cbhmt7c24e'
         },
         fetch
       }),
