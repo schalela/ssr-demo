@@ -1,5 +1,6 @@
 
 import App, { Container } from 'next/app';
+import Head from 'next/head';
 import React from 'react';
 import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
@@ -89,6 +90,10 @@ class MyApp extends App {
 
     return (
       <Container>
+        <Head>
+          <link rel='shortcut icon' href='static/favicon.ico' />
+          <title>SSR Demo</title>
+        </Head>
         <GlobalStyle />
         <ApolloProvider client={this.apolloClient}>
           <Component {...pageProps} />
