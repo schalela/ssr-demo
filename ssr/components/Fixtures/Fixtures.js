@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Query } from 'react-apollo';
+import Loader from 'react-loader-spinner';
+
 import FixtureItem from './FixtureItem';
 
 import GET_FIXTURES from '../../data/get-fixtures.query';
@@ -28,8 +30,19 @@ const Date = styled.h2`
   font-weight: 500;
 `;
 
-const Loading = styled.p`
-  color: rgba(255,255,255,0.3);
+const Loading = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+`;
+
+const RenderType = styled.div`
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  text-shadow: 0 0 3px white;
 `;
 
 const Fixtures = ({ date }) => {
@@ -37,13 +50,19 @@ const Fixtures = ({ date }) => {
     <Query query={date ? GET_FIXTURES : GET_LIVE} variables={date && { date }} pollInterval={date ? 0 : 60000}>
       {({ data, loading }) => {
         if (loading) {
-          return <Loading>Loading...</Loading>;
+          return <Loading><Loader
+            type='Watch'
+            color='white'
+            height='100'
+            width='100'
+          /></Loading>;
         }
 
         const { fixtures } = data;
 
         return (
           <>
+            <RenderType>SSR</RenderType>
             <Title>{date ? 'Final results' : 'Live results'}</Title>
             <Date>{date}</Date>
             <FixtureList>

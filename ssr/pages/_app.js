@@ -23,10 +23,6 @@ html, body {
   font-family: sans-serif;
   margin: 0;
 }
-
-body {
-  padding: 48px 0;
-}
 `;
 
 class MyApp extends App {
