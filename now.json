@@ -3,6 +3,10 @@
   "name": "ssr-demo",
   "builds": [
     {
+      "src": "index.html",
+      "use": "@now/static"
+    }, 
+    {
       "src": "no-ssr/package.json",
       "use": "@now/static-build",
       "config": {
