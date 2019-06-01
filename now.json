@@ -3,9 +3,13 @@
   "name": "ssr-demo",
   "builds": [
     {
+      "src": "svelte.html",
+      "use": "@now/static"
+    },
+    {
       "src": "index.html",
       "use": "@now/static"
-    }, 
+    },
     {
       "src": "no-ssr/package.json",
       "use": "@now/static-build",
@@ -20,11 +24,5 @@
   ],
   "regions": [
     "syd1"
-  ],
-  "routes": [
-    {
-      "src": "/ssr/date/(.*)",
-      "dest": "/ssr/date?date=$1"
-    }
   ]
 }
