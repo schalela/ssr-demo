@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Query } from 'react-apollo';
-import Loader from 'react-loader-spinner';
 
 import FixtureItem from './FixtureItem';
 
@@ -50,12 +49,7 @@ const Fixtures = ({ date }) => {
     <Query query={date ? GET_FIXTURES : GET_LIVE} variables={date && { date }} pollInterval={date ? 0 : 60000}>
       {({ data, loading }) => {
         if (loading) {
-          return <Loading><Loader
-            type='Watch'
-            color='white'
-            height='100'
-            width='100'
-          /></Loading>;
+          return <Loading>Loading...</Loading>;
         }
 
         const { fixtures } = data;

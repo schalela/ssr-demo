@@ -6,8 +6,6 @@ import { ApolloProvider } from 'react-apollo';
 
 import { Fixtures } from './components';
 
-import parseQueryString from './utils/get-param';
-
 const cache = new InMemoryCache();
 
 const client = new ApolloClient({
@@ -22,12 +20,9 @@ const client = new ApolloClient({
 });
 
 function App () {
-  const params = parseQueryString();
-  const date = params['date'];
-
   return (
     <ApolloProvider client={client}>
-      <Fixtures date={date} />
+      <Fixtures />
     </ApolloProvider>
   );
 }
