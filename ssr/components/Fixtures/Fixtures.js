@@ -4,7 +4,6 @@ import { Query } from 'react-apollo';
 
 import FixtureItem from './FixtureItem';
 
-import GET_FIXTURES from '../../data/get-fixtures.query';
 import GET_LIVE from '../../data/get-live.query';
 
 const FixtureList = styled.ul`
@@ -46,7 +45,7 @@ const RenderType = styled.div`
 
 const Fixtures = ({ date }) => {
   return (
-    <Query query={date ? GET_FIXTURES : GET_LIVE} variables={date && { date }} pollInterval={date ? 0 : 60000}>
+    <Query query={GET_LIVE}>
       {({ data, loading }) => {
         if (loading) {
           return <Loading>Loading...</Loading>;
