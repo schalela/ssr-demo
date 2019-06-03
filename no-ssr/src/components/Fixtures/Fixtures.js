@@ -11,7 +11,7 @@ const FixtureList = styled.ul`
   flex-direction: column;
   align-items: center;
   padding: 0;
-  margin: 10px 0;
+  margin: 25px 0;
 `;
 
 const Loading = styled.div`
