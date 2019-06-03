@@ -23,19 +23,21 @@ html, body {
 `;
 
 class AppWrapper extends App {
-  static async getInitialProps ({ Component }) {
+  static async getInitialProps ({ Component, ctx }) {
     const apollo = createApolloClient();
+    const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
 
     try {
       await getDataFromTree(
-        <ApolloProvider client={apollo}><Component /></ApolloProvider>
+        <ApolloProvider client={apollo}><Component {...pageProps} /></ApolloProvider>
       );
     } catch (error) {
       console.error('Error while running `getDataFromTree`', error);
     }
 
     return {
-      initialState: apollo.cache.extract()
+      initialState: apollo.cache.extract(),
+      pageProps
     };
   }
 
@@ -45,7 +47,7 @@ class AppWrapper extends App {
   }
 
   render () {
-    const { Component } = this.props;
+    const { Component, pageProps } = this.props;
 
     return (
       <Container>
@@ -55,7 +57,7 @@ class AppWrapper extends App {
         </Head>
         <GlobalStyle />
         <ApolloProvider client={this.apolloClient}>
-          <Component />
+          <Component {...pageProps} />
         </ApolloProvider>
       </Container>
     );
