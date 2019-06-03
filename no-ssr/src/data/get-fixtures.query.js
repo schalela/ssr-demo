@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export default gql`
-  query live {
-    fixtures: live {
+  query fixtures {
+    fixtures {
       fixture_id
       league_id
       league {

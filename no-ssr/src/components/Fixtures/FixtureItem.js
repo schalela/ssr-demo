@@ -9,7 +9,7 @@ const ListItem = styled.li`
   width: 640px;
   max-width: calc(100% - 32px);
   font-size: 16px;
-  padding: 32px;
+  padding: 20px;
   border-radius: 8px;
   margin-bottom: 16px;
   place-items: center;
@@ -57,28 +57,13 @@ const Goals = styled.h2`
   font-weight: 500;
   font-size: 32px;
   line-height: 64px;
-  margin: 0 0 16px;
+  margin: 0;
 `;
 
-const Time = styled.div`
-  display: flex;
-  flex-direction: column;
+const Status = styled.div`
+  display: block;
   font-size: 14px;
-  color: #279A24;
-  width: 30px;
-`;
-
-const LiveBar = styled.div`
-  height: 2px;
-  width: 30%;
-  margin: 0px 30px;
-  background-color: green;
-  animation: live-indicator 0.5s infinite alternate;
-
-  @keyframes live-indicator {
-    from { margin-left: 5px; }
-    to { margin-left: 15px; }
-  }
+  color: #999;
 `;
 
 const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam, goalsAwayTeam, elapsed, league: { logo } } }) => {
@@ -95,10 +80,7 @@ const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam
           <LeagueLogo src={logo} />
         </LazyLoad>
         <Goals>{goalsHomeTeam} – {goalsAwayTeam}</Goals>
-        <Time>
-          {elapsed}'
-          {statusShort !== 'HT' && statusShort !== 'FT' && <LiveBar />}
-        </Time>
+        <Status>{statusShort}</Status>
       </Score>
       <Team>
         <LazyLoad height={64} offsetVertical={300}>
@@ -107,7 +89,6 @@ const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam
         <TeamName>{awayTeam.team_name}</TeamName>
       </Team>
     </ListItem>
-
   );
 };
 

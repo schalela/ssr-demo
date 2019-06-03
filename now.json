@@ -3,10 +3,6 @@
   "name": "ssr-demo",
   "builds": [
     {
-      "src": "svelte.html",
-      "use": "@now/static"
-    },
-    {
       "src": "index.html",
       "use": "@now/static"
     },

@@ -1,9 +1,7 @@
 import React from 'react';
 import { Fixtures } from '../components';
 
-const Index = () => {
-  return <Fixtures />;
-};
+const Index = () => <Fixtures />;
 
 Index.getInitialProps = async ({ res }) => {
   if (res) {
