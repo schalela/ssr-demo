@@ -67,6 +67,7 @@ const Status = styled.div`
 `;
 
 const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam, goalsAwayTeam, elapsed, league: { logo } } }) => {
+  const cdnLogo = logo.replace('https://www.api-football.com/public', 'https://dfjrbg8kahfuv.cloudfront.net');
   return (
     <ListItem>
       <Team>
@@ -77,7 +78,7 @@ const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam
       </Team>
       <Score>
         <LazyLoad height={40} offsetVertical={300}>
-          <LeagueLogo src={logo} />
+          <LeagueLogo src={cdnLogo} />
         </LazyLoad>
         <Goals>{goalsHomeTeam} – {goalsAwayTeam}</Goals>
         <Status>{statusShort}</Status>
