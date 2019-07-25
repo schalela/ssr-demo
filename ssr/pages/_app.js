@@ -53,6 +53,7 @@ class AppWrapper extends App {
       <Container>
         <Head>
           <link rel='shortcut icon' href='/ssr/static/favicon.ico' />
+          <meta name='Description' content='SSR version of the demo' />
           <title>SSR Demo</title>
         </Head>
         <GlobalStyle />

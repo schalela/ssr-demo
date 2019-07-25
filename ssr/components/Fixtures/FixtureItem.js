@@ -63,7 +63,7 @@ const Goals = styled.h2`
 const Status = styled.div`
   display: block;
   font-size: 14px;
-  color: #999;
+  color: darkgoldenrod;
 `;
 
 const getCdnLogo = logo => logo.replace('https://www.api-football.com/public', 'https://dfjrbg8kahfuv.cloudfront.net');
@@ -79,7 +79,7 @@ const FixtureItem = ({ fixture: { homeTeam, awayTeam, statusShort, goalsHomeTeam
       </Team>
       <Score>
         <LazyLoad height={40} offsetVertical={300}>
-          <LeagueLogo src={getCdnLogo(logo)} />
+          <LeagueLogo src={getCdnLogo(logo)} alt={'League logo'} />
         </LazyLoad>
         <Goals>{goalsHomeTeam} – {goalsAwayTeam}</Goals>
         <Status>{statusShort}</Status>
