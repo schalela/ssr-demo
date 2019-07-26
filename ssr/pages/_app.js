@@ -23,7 +23,7 @@ html, body {
 `;
 
 class AppWrapper extends App {
-  static async getInitialProps ({ Component, ctx }) {
+  static async getInitialProps({ Component, ctx }) {
     const apollo = createApolloClient();
     const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
 
@@ -41,21 +41,16 @@ class AppWrapper extends App {
     };
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.apolloClient = createApolloClient(props.initialState);
   }
 
-  render () {
+  render() {
     const { Component, pageProps } = this.props;
 
     return (
       <Container>
-        <Head>
-          <link rel='shortcut icon' href='/ssr/static/favicon.ico' />
-          <meta name='Description' content='SSR version of the demo' />
-          <title>SSR Demo</title>
-        </Head>
         <GlobalStyle />
         <ApolloProvider client={this.apolloClient}>
           <Component {...pageProps} />
