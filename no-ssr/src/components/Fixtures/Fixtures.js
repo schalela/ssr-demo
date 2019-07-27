@@ -48,7 +48,7 @@ const Fixtures = () => {
           <>
             <RenderType>NON-SSR</RenderType>
             <FixtureList>
-              {fixtures.sort((a, b) => a.league_id - b.league_id || a.fixture_id - b.fixture_id).map((fixture, i) => <FixtureItem key={i} fixture={fixture} />)}
+              {fixtures.sort((a, b) => a.league_id - b.league_id || a.fixture_id - b.fixture_id).slice(0, 30).map((fixture, i) => <FixtureItem key={i} fixture={fixture} />)}
             </FixtureList>
           </>
         );
