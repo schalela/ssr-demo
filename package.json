@@ -7,8 +7,8 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "semistandard": "^13.0.1"
+    "eslint": "^6.6.0",
+    "semistandard": "^14.2.0"
   },
   "workspaces": [
     "*"

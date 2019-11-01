@@ -13,12 +13,11 @@ export default class MyDocument extends Document {
 
   render () {
     return (
-      <html lang={'en'}>
+      <html lang='en'>
         <Head>
           <link rel='shortcut icon' href='/ssr/static/favicon.ico' />
           <meta name='Description' content='SSR version of the demo' />
           <link rel='preconnect' href='https://dfjrbg8kahfuv.cloudfront.net' />
-          <title>SSR Demo</title>
           {this.props.styleTags}
         </Head>
         <body>

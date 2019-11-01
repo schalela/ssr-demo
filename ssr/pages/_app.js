@@ -1,5 +1,5 @@
 
-import App, { Container } from 'next/app';
+import App from 'next/app';
 import Head from 'next/head';
 import React from 'react';
 import { ApolloProvider, getDataFromTree } from 'react-apollo';
@@ -23,7 +23,7 @@ html, body {
 `;
 
 class AppWrapper extends App {
-  static async getInitialProps({ Component, ctx }) {
+  static async getInitialProps ({ Component, ctx }) {
     const apollo = createApolloClient();
     const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
 
@@ -41,21 +41,24 @@ class AppWrapper extends App {
     };
   }
 
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.apolloClient = createApolloClient(props.initialState);
   }
 
-  render() {
+  render () {
     const { Component, pageProps } = this.props;
 
     return (
-      <Container>
+      <>
+        <Head>
+          <title>SSR Demo</title>
+        </Head>
         <GlobalStyle />
         <ApolloProvider client={this.apolloClient}>
           <Component {...pageProps} />
         </ApolloProvider>
-      </Container>
+      </>
     );
   }
 }
