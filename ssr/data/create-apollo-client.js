@@ -8,7 +8,7 @@ export const createApolloClient = initialState => new ApolloClient({
   link: createHttpLink({
     uri: 'https://emjxn6xptvbvlhcocrhq7gwhoy.appsync-api.ap-southeast-2.amazonaws.com/graphql',
     headers: {
-      'x-api-key': 'da2-htijskntwzehlai3cbhmt7c24e'
+      'x-api-key': 'da2-x6wmkzo52nadjkujuvpw2f3cvi'
     },
     fetch
   }),
